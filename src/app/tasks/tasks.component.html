@@ -1,0 +1,18 @@
+<section id="tasks">
+    <header>
+        <h2>{{name}}'s Tasks</h2>
+        <menu>
+            <button (click)="addnewTask()">Add Task</button>
+        </menu>
+    </header>
+
+    <app-new-task *ngIf="addbtnClicked" [userId]="userId!" (closeDialog)="onCloseDialog($event)"></app-new-task>
+
+    <ul>
+        @for(task of selectedUserTasks; track task.id) {
+            <li>
+                <app-task [task]="task" (completedTask)="onCompleteTask($event)"></app-task>
+            </li>
+        }
+    </ul>
+</section>
